@@ -1,0 +1,11 @@
+{
+  "name": "darting-cat-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3"
+  }
+}
