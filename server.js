@@ -65,4 +65,12 @@ app.post("/update-level", async (req, res) => {
   }
 });
 
+app.get("/get-image/:nombre", async (req, res) => {
+  const col = mongoose.connection.collection("Recursos");
+
+  const data = await col.findOne({ _id: req.params.nombre });
+
+  res.json(data);
+});
+
 app.listen(3000, () => console.log("Servidor listo"));
