@@ -49,4 +49,20 @@ app.post("/login", async (req, res) => {
   });
 });
 
+// 🆙 ACTUALIZAR NIVEL
+app.post("/update-level", async (req, res) => {
+  const { username, nivel } = req.body;
+
+  try {
+    await User.updateOne(
+      { username: username },
+      { $set: { nivel: nivel } }
+    );
+
+    res.json({ message: "Nivel actualizado" });
+  } catch (e) {
+    res.json({ error: "Error al guardar nivel" });
+  }
+});
+
 app.listen(3000, () => console.log("Servidor listo"));
