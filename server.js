@@ -7,6 +7,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const Recurso = mongoose.model("Recurso", {
+  nombre: String,
+  imagen_base64: String
+}, "Recursos"); 
+
 // 🔗 Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("✅ Mongo conectado"))
