@@ -111,14 +111,11 @@ app.post("/update-vidas", async (req, res) => {
   }
 });
 
-// 🖼️ OBTENER IMAGEN (FIX IMPORTANTE AQUÍ)
 app.get("/get-image/:nombre", async (req, res) => {
   try {
-    const data = await Recurso.findOne({ nombre: req.params.nombre });
-
     console.log("🔍 Buscando:", req.params.nombre);
 
-    const data = await col.findOne({ nombre: req.params.nombre });
+    const data = await Recurso.findOne({ nombre: req.params.nombre });
 
     if (!data) {
       console.log("❌ No encontrado");
@@ -136,6 +133,8 @@ app.get("/get-image/:nombre", async (req, res) => {
 });
 
 // 🚀 SERVIDOR
-app.listen(3000, () => {
-  console.log("🚀 Servidor listo en puerto 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("🚀 Servidor listo en puerto", PORT);
 });
