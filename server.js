@@ -114,7 +114,7 @@ app.post("/update-vidas", async (req, res) => {
 // 🖼️ OBTENER IMAGEN (FIX IMPORTANTE AQUÍ)
 app.get("/get-image/:nombre", async (req, res) => {
   try {
-    const col = mongoose.connection.collection("Recursos");
+    const data = await Recurso.findOne({ nombre: req.params.nombre });
 
     console.log("🔍 Buscando:", req.params.nombre);
 
