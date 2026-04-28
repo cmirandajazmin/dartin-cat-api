@@ -44,8 +44,12 @@ app.post("/register", async (req, res) => {
     });
 
     await user.save();
+   // 👇 arregla base64 automáticamente
+   if (data.imagen_base64 && !data.imagen_base64.startsWith("data:image")) {
+  data.imagen_base64 = "data:image/png;base64," + data.imagen_base64;
+ }
 
-    res.json({ message: "Registrado" });
+res.json(data);
 
   } catch (e) {
     res.status(500).json({ error: "Error en registro" });
