@@ -136,6 +136,11 @@ app.get("/get-image/:nombre", async (req, res) => {
   }
 });
 
+app.get("/debug", async (req, res) => {
+  const data = await Recurso.find();
+  res.json(data);
+});
+
 // 🚀 SERVIDOR
 const PORT = process.env.PORT || 3000;
 
