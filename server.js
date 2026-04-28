@@ -7,11 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const Recurso = mongoose.model("Recurso", {
-  nombre: String,
-  imagen_base64: String
-}, "Recursos"); 
-
 // 🔗 Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("✅ Mongo conectado"))
@@ -25,6 +20,11 @@ const User = mongoose.model("User", {
   vidas: { type: Number, default: 5 },
   fechaRegistro: { type: Date, default: Date.now }
 });
+
+const Recurso = mongoose.model("Recurso", {
+  nombre: String,
+  imagen_base64: String
+}, "Recursos"); 
 
 // 📝 REGISTRO
 app.post("/register", async (req, res) => {
